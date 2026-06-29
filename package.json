@@ -1,0 +1,78 @@
+{
+  "name": "@nakasyou/btleplug-js",
+  "version": "0.1.0",
+  "description": "Node.js bindings for btleplug, with Web Streams and a Web Bluetooth compatible facade.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "napi": {
+    "binaryName": "btleplug_js",
+    "targets": [
+      "aarch64-apple-darwin",
+      "x86_64-apple-darwin",
+      "x86_64-pc-windows-msvc",
+      "x86_64-unknown-linux-gnu",
+      "aarch64-unknown-linux-gnu"
+    ]
+  },
+  "optionalDependencies": {
+    "@nakasyou/btleplug-js-darwin-arm64": "0.1.0",
+    "@nakasyou/btleplug-js-darwin-x64": "0.1.0",
+    "@nakasyou/btleplug-js-linux-arm64-gnu": "0.1.0",
+    "@nakasyou/btleplug-js-linux-x64-gnu": "0.1.0",
+    "@nakasyou/btleplug-js-win32-x64-msvc": "0.1.0"
+  },
+  "scripts": {
+    "build": "npm run build:native && npm run build:js",
+    "build:debug": "napi build --platform --dts native.d.ts",
+    "build:native": "napi build --platform --release --dts native.d.ts",
+    "build:js": "tsc -p tsconfig.json",
+    "artifacts": "napi artifacts",
+    "create:npm-dirs": "napi create-npm-dirs",
+    "prepublishOnly": "npm run build",
+    "prepack": "npm run build",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "keywords": [
+    "bluetooth",
+    "ble",
+    "btleplug",
+    "napi-rs",
+    "web-bluetooth",
+    "streams"
+  ],
+  "author": "nakasyou",
+  "license": "MIT OR Apache-2.0",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nakasyou/btleplug-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nakasyou/btleplug-js/issues"
+  },
+  "homepage": "https://github.com/nakasyou/btleplug-js#readme",
+  "devDependencies": {
+    "@napi-rs/cli": "^3.7.2",
+    "@types/node": "^22.18.0",
+    "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=18.17"
+  },
+  "packageManager": "npm@10.9.8"
+}

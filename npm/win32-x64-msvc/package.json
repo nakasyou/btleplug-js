@@ -1,0 +1,40 @@
+{
+  "name": "@nakasyou/btleplug-js-win32-x64-msvc",
+  "version": "0.1.0",
+  "cpu": [
+    "x64"
+  ],
+  "main": "btleplug_js.win32-x64-msvc.node",
+  "files": [
+    "btleplug_js.win32-x64-msvc.node"
+  ],
+  "description": "Node.js bindings for btleplug, with Web Streams and a Web Bluetooth compatible facade.",
+  "keywords": [
+    "bluetooth",
+    "ble",
+    "btleplug",
+    "napi-rs",
+    "web-bluetooth",
+    "streams"
+  ],
+  "author": "nakasyou",
+  "homepage": "https://github.com/nakasyou/btleplug-js#readme",
+  "license": "MIT OR Apache-2.0",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "engines": {
+    "node": ">=18.17"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nakasyou/btleplug-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nakasyou/btleplug-js/issues"
+  },
+  "os": [
+    "win32"
+  ]
+}

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+target/
+*.node
+index.js
+native.d.ts
+npm/*/*.node
+.DS_Store
+*.log
