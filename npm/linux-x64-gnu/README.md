@@ -1,3 +1,3 @@
 # `@nakasyou/btleplug-js-linux-x64-gnu`
 
-This is the **x86_64-unknown-linux-gnu** binary for `@nakasyou/btleplug-js`
+This is the **x86_64-unknown-linux-gnu** binary for `btleplug-js`

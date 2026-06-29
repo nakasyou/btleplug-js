@@ -1,3 +1,3 @@
 # `@nakasyou/btleplug-js-win32-x64-msvc`
 
-This is the **x86_64-pc-windows-msvc** binary for `@nakasyou/btleplug-js`
+This is the **x86_64-pc-windows-msvc** binary for `btleplug-js`

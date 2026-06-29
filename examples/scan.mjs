@@ -1,19 +1,19 @@
-import { Manager } from "../dist/index.js";
+import { createManager } from '../dist/index.mjs'
 
-const manager = await Manager.create();
-const [adapter] = await manager.adapters();
+const manager = await createManager()
+const [adapter] = await manager.adapters()
 
 if (!adapter) {
-  throw new Error("No Bluetooth adapters found");
+  throw new Error('No Bluetooth adapters found')
 }
 
-console.log(`Scanning with ${adapter.info}`);
-const reader = adapter.scan().getReader();
+console.log(`Scanning with ${adapter.info}`)
+const reader = adapter.scan().getReader()
 
-setTimeout(() => reader.cancel(), 10_000);
+setTimeout(() => reader.cancel(), 10_000)
 
 for (;;) {
-  const { done, value } = await reader.read();
-  if (done) break;
-  console.log(value.peripheralId, await value.properties());
+  const { done, value } = await reader.read()
+  if (done) break
+  console.log(value.peripheralId, await value.properties())
 }

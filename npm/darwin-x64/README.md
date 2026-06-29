@@ -1,3 +1,3 @@
 # `@nakasyou/btleplug-js-darwin-x64`
 
-This is the **x86_64-apple-darwin** binary for `@nakasyou/btleplug-js`
+This is the **x86_64-apple-darwin** binary for `btleplug-js`

@@ -1,20 +1,72 @@
 {
-  "name": "@nakasyou/btleplug-js",
+  "name": "btleplug-js",
   "version": "0.1.0",
   "description": "Node.js bindings for btleplug, with Web Streams and a Web Bluetooth compatible facade.",
-  "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    }
+  "keywords": [
+    "ble",
+    "bluetooth",
+    "btleplug",
+    "napi-rs",
+    "streams",
+    "web-bluetooth"
+  ],
+  "homepage": "https://github.com/nakasyou/btleplug-js#readme",
+  "bugs": {
+    "url": "https://github.com/nakasyou/btleplug-js/issues"
+  },
+  "license": "MIT OR Apache-2.0",
+  "author": "nakasyou",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nakasyou/btleplug-js.git"
   },
   "files": [
     "dist"
   ],
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "bun run build:native && bun run build:js",
+    "build:debug": "napi build --platform --dts native.d.ts",
+    "build:native": "napi build --platform --release --dts native.d.ts",
+    "build:js": "vp pack",
+    "artifacts": "napi artifacts",
+    "create:npm-dirs": "napi create-npm-dirs",
+    "format": "vp fmt",
+    "format:check": "vp fmt --check",
+    "lint": "vp lint src-js test examples vite.config.ts",
+    "pack:dry": "bun pm pack --dry-run",
+    "prepublishOnly": "bun run build",
+    "prepack": "bun run build",
+    "test": "bun run build && bun test",
+    "typecheck": "bunx tsc -p tsconfig.json --noEmit",
+    "check": "vp check src-js test examples vite.config.ts && bun run typecheck"
+  },
+  "devDependencies": {
+    "@napi-rs/cli": "^3.7.2",
+    "@types/node": "^22.18.0",
+    "typescript": "^5.9.2",
+    "vite-plus": "^0.2.1"
+  },
+  "optionalDependencies": {
+    "@nakasyou/btleplug-js-darwin-arm64": "0.1.0",
+    "@nakasyou/btleplug-js-darwin-x64": "0.1.0",
+    "@nakasyou/btleplug-js-linux-arm64-gnu": "0.1.0",
+    "@nakasyou/btleplug-js-linux-x64-gnu": "0.1.0",
+    "@nakasyou/btleplug-js-win32-x64-msvc": "0.1.0"
+  },
   "napi": {
     "binaryName": "btleplug_js",
     "targets": [
@@ -25,54 +77,9 @@
       "aarch64-unknown-linux-gnu"
     ]
   },
-  "optionalDependencies": {
-    "@nakasyou/btleplug-js-darwin-arm64": "0.1.0",
-    "@nakasyou/btleplug-js-darwin-x64": "0.1.0",
-    "@nakasyou/btleplug-js-linux-arm64-gnu": "0.1.0",
-    "@nakasyou/btleplug-js-linux-x64-gnu": "0.1.0",
-    "@nakasyou/btleplug-js-win32-x64-msvc": "0.1.0"
-  },
-  "scripts": {
-    "build": "npm run build:native && npm run build:js",
-    "build:debug": "napi build --platform --dts native.d.ts",
-    "build:native": "napi build --platform --release --dts native.d.ts",
-    "build:js": "tsc -p tsconfig.json",
-    "artifacts": "napi artifacts",
-    "create:npm-dirs": "napi create-npm-dirs",
-    "prepublishOnly": "npm run build",
-    "prepack": "npm run build",
-    "test": "npm run build && node --test test/*.test.mjs",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
-  },
-  "keywords": [
-    "bluetooth",
-    "ble",
-    "btleplug",
-    "napi-rs",
-    "web-bluetooth",
-    "streams"
-  ],
-  "author": "nakasyou",
-  "license": "MIT OR Apache-2.0",
-  "publishConfig": {
-    "access": "public",
-    "provenance": true
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nakasyou/btleplug-js.git"
-  },
-  "bugs": {
-    "url": "https://github.com/nakasyou/btleplug-js/issues"
-  },
-  "homepage": "https://github.com/nakasyou/btleplug-js#readme",
-  "devDependencies": {
-    "@napi-rs/cli": "^3.7.2",
-    "@types/node": "^22.18.0",
-    "typescript": "^5.9.2"
-  },
   "engines": {
+    "bun": ">=1.3.0",
     "node": ">=18.17"
   },
-  "packageManager": "npm@10.9.8"
+  "packageManager": "bun@1.3.13"
 }
